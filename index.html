@@ -36,13 +36,14 @@
             top: 0;
             z-index: 100;
             background-color: rgba(255, 252, 245, 0.98);
+            padding: 8px 0;
         }
 
         .nav-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 18px 0;
             flex-wrap: wrap;
         }
 
@@ -50,54 +51,58 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
         .logo-img {
-            height: 55px;
+            height: 70px;
             width: auto;
             object-fit: contain;
         }
         .logo-placeholder {
             display: flex;
             align-items: center;
-            justify-content: center;
+            //justify-content: center;
             gap: 10px;
         }
         .logo-icon {
             background: #b45f2b;
-            width: 48px;
-            height: 48px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
         }
         .logo-text h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #b45f2b;
             line-height: 1.2;
+            //margin-bottom: 5px;
         }
         .logo-text span {
             color: #4a6a5e;
-            font-weight: 500;
-            font-size: 0.75rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             display: block;
+            margin-top: 2px;
         }
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 40px;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
             text-decoration: none;
             font-weight: 600;
             color: #3a4a3f;
             transition: 0.2s;
+            font-size: 1.05rem;
         }
         .nav-links a:hover, .nav-links a.active {
             color: #b45f2b;
@@ -105,9 +110,10 @@
         .donate-nav-btn {
             background: #b45f2b;
             color: white !important;
-            padding: 10px 22px;
-            border-radius: 40px;
+            padding: 12px 28px;
+            border-radius: 50px;
             transition: 0.2s;
+            font-weight: 700;
         }
         .donate-nav-btn:hover {
             background: #8e4a21;
@@ -433,16 +439,22 @@
                 grid-template-columns: 1fr;
             }
             .logo-img {
-                height: 45px;
+                height: 50px;
             }
             .logo-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
             }
             .logo-text h1 {
                 font-size: 1.2rem;
             }
+            //.logo-text span {
+        //font-size: 0.7rem;
+   // }
+    .nav-links a {
+        font-size: 1rem;
+    }
         }
     </style>
 </head>
