@@ -42,20 +42,50 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 12px 0;
             flex-wrap: wrap;
         }
 
-        .logo h1 {
-            font-size: 1.6rem;
+        /* Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+        .logo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            background: #b45f2b;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo-text h1 {
+            font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #b45f2b;
+            line-height: 1.2;
         }
-        .logo span {
+        .logo-text span {
             color: #4a6a5e;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             display: block;
         }
         .nav-links {
@@ -72,14 +102,14 @@
         .nav-links a:hover, .nav-links a.active {
             color: #b45f2b;
         }
-        .donate-btn {
+        .donate-nav-btn {
             background: #b45f2b;
             color: white !important;
             padding: 10px 22px;
             border-radius: 40px;
             transition: 0.2s;
         }
-        .donate-btn:hover {
+        .donate-nav-btn:hover {
             background: #8e4a21;
             transform: scale(0.97);
         }
@@ -237,7 +267,7 @@
             font-weight: 500;
         }
 
-        /* Gallery - No filters, just community engagement */
+        /* Gallery */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -304,6 +334,16 @@
             border-radius: 40px;
             cursor: pointer;
         }
+        .contact-info {
+            margin-top: 32px;
+            text-align: center;
+            background: #f9f3ea;
+            padding: 24px;
+            border-radius: 32px;
+        }
+        .contact-info p {
+            margin: 8px 0;
+        }
 
         /* Partners */
         .partners {
@@ -318,9 +358,17 @@
             padding: 20px 28px;
             border-radius: 50px;
             border: 1px solid #f0e2d4;
-            width: 240px;
+            width: 220px;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
+            color: #b45f2b;
+        }
+        .partner-card span {
+            font-weight: normal;
+            color: #4a6a5e;
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 5px;
         }
 
         /* Modal Lightbox */
@@ -355,6 +403,14 @@
             text-align: center;
         }
 
+        /* Logo upload hint */
+        .logo-upload-hint {
+            font-size: 0.7rem;
+            color: #999;
+            display: block;
+            margin-top: 4px;
+        }
+
         @media (max-width: 800px) {
             .nav-links {
                 display: none;
@@ -376,6 +432,17 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+            .logo-img {
+                height: 45px;
+            }
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -384,8 +451,16 @@
 <header>
     <div class="container">
         <div class="nav-bar">
-            <div class="logo">
-                <h1>LAFO <span>Loyce Akoromit Foundation</span></h1>
+            <div class="logo" id="logoContainer">
+                <!-- Logo will be dynamically checked. If no image, show placeholder -->
+                <div class="logo-placeholder" id="logoPlaceholder">
+                    <div class="logo-icon">LA</div>
+                    <div class="logo-text">
+                        <h1>LAFO</h1>
+                        <span>Loyce Akoromit Foundation</span>
+                    </div>
+                </div>
+                <img class="logo-img" id="logoImage" style="display: none;" alt="LAFO Logo">
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">Home</a></li>
@@ -393,7 +468,7 @@
                 <li><a href="#programs">Programs</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#donate" class="donate-btn">Donate</a></li>
+                <li><a href="#contact" class="donate-nav-btn">Donate</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
                 <i class="fas fa-bars"></i>
@@ -410,7 +485,7 @@
                 <div class="hero-tagline">"I am chosen, not forsaken in my Father's house"</div>
                 <h2>Wellness for Women & Children Affected by Gender-Based Violence</h2>
                 <p>Loyce Akoromit Foundation (LAFO) is a Christian community-based organization empowering women, children, and youth through psychosocial support, skills training, education, and advocacy in Ngora District, Uganda.</p>
-                <a href="#donate" class="btn-primary">Support Our Work <i class="fas fa-heart" style="margin-left: 8px;"></i></a>
+                <a href="#contact" class="btn-primary">Support Our Work <i class="fas fa-heart" style="margin-left: 8px;"></i></a>
             </div>
             <div class="hero-image">
                 <i class="fas fa-hands-helping" style="font-size: 6rem;"></i>
@@ -478,7 +553,7 @@
         </div>
     </section>
 
-    <!-- Photo Gallery - Community Engagement (No Filters) -->
+    <!-- Photo Gallery -->
     <section id="gallery">
         <div class="container">
             <h2 class="section-title">Community Engagement in Action</h2>
@@ -492,19 +567,20 @@
         <div class="container">
             <h2 class="section-title">Our Partners</h2>
             <div class="partners">
-                <div class="partner-card">Ngora District Local Government</div>
-                <div class="partner-card">Ministry of Gender & Social Development</div>
-                <div class="partner-card">Community Volunteers (Life Coaches)</div>
-                <div class="partner-card">Village Health Teams</div>
-                <div class="partner-card">Local Schools & Health Facilities</div>
+                <div class="partner-card">Ngora District Local Government <span>Government Partner</span></div>
+                <div class="partner-card">Ministry of Gender & Social Development <span>Government Partner</span></div>
+                <div class="partner-card">SAF-TESO <span>Strategic Partner</span></div>
+                <div class="partner-card">Vision Tendo <span>Strategic Partner</span></div>
+                <div class="partner-card">Community Volunteers <span>Local Champions</span></div>
+                <div class="partner-card">Village Health Teams <span>Community Health</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Volunteer -->
+    <!-- Contact & Donate Section -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">Get Involved</h2>
+            <h2 class="section-title">Get Involved & Support Us</h2>
             <div class="contact-form">
                 <form id="volunteerForm">
                     <div class="form-group"><input type="text" placeholder="Full Name" required></div>
@@ -520,22 +596,17 @@
                     <div class="form-group"><textarea rows="3" placeholder="Your message or question..."></textarea></div>
                     <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
                 </form>
-                <div style="margin-top: 32px; text-align: center;">
-                    <p><i class="fas fa-phone-alt"></i> +256 0783740174 / +256 772687790 / +256 706977182</p>
-                    <p><i class="fas fa-envelope"></i> lafo@gmail.com</p>
+                
+                <div class="contact-info">
+                    <h3 style="color:#b45f2b; margin-bottom: 16px;">📞 Contact Us Directly</h3>
+                    <p><strong>Chairperson:</strong> +256 783740174 / +256 753238577 | <strong>Email:</strong> Jomuron2016@gmail.com</p>
+                    <p><strong>Vice Chairperson:</strong> +256 786706249 / +256 791599657 | <strong>Email:</strong> Jomuron2016@gmail.com</p>
+                    <p><strong>General Inquiries:</strong> Jomuron2016@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> P.O. Box 31 Ngora, Uganda</p>
+                    <hr style="margin: 20px 0; border-color: #e0cfbf;">
+                    <p><i class="fas fa-hand-holding-usd"></i> <strong>To support our work financially, please reach out via any of the contacts above.</strong> We will share donation details (Mobile Money or Bank Transfer) directly.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Donate Section -->
-    <section id="donate" style="background: #f5ede2;">
-        <div class="container" style="text-align:center;">
-            <h2 class="section-title">Support Our Mission</h2>
-            <p style="margin-bottom: 25px;">Your donation helps us provide counseling, education, economic empowerment, and legal advocacy for survivors of gender-based violence.</p>
-            <a href="#" class="btn-primary" style="background:#2c3e2f;">Donate via Mobile Money / Bank</a>
-            <p style="margin-top: 20px; font-size: 0.9rem;">Contact us for direct donation arrangements.</p>
         </div>
     </section>
 </main>
@@ -544,6 +615,7 @@
     <div class="container">
         <p>© 2025 Loyce Akoromit Foundation (LAFO) — Creating safe spaces, restoring hope.</p>
         <p style="margin-top: 16px; font-size:0.85rem;">P.O. Box 31 Ngora, Uganda | Christ-centered · Transparent · Accountable</p>
+        <p style="margin-top: 8px; font-size:0.8rem;">Partners: Ngora District, Ministry of Gender, SAF-TESO, Vision Tendo</p>
     </div>
 </footer>
 
@@ -554,8 +626,35 @@
 </div>
 
 <script>
-    // Community engagement gallery images (no filters)
-    // These represent real activities from LAFO's concept paper
+    // ==================== LOGO HANDLING ====================
+    // Try to load a saved logo from localStorage (if user uploaded)
+    // Also supports manual logo file upload via browser developer tools or you can set a default path.
+    // For now, we check if a logo image file exists at a default path "images/logo.png" or "logo.png"
+    // You can also simply replace the placeholder with your actual logo by uncommenting the line below.
+    
+    function setLogo(imageUrl) {
+        const logoPlaceholder = document.getElementById('logoPlaceholder');
+        const logoImage = document.getElementById('logoImage');
+        if (logoPlaceholder && logoImage && imageUrl) {
+            logoImage.src = imageUrl;
+            logoImage.style.display = 'block';
+            logoPlaceholder.style.display = 'none';
+        }
+    }
+    
+    // Option 1: If you have a logo file, rename it to "lafo-logo.png" and place it in the same folder.
+    // Then uncomment the line below:
+    // setLogo('lafo-logo.png');
+    
+    // Option 2: You can also right-click on the logo placeholder in your browser, 
+    // inspect element, and change the image source manually.
+    
+    // For now, the placeholder "LA" icon will show. To replace with your actual logo:
+    // 1. Save your logo image as "lafo-logo.png" in the same folder as this HTML file
+    // 2. Uncomment the line below:
+    // setLogo('lafo-logo.png');
+    
+    // ==================== GALLERY ====================
     const galleryItems = [
         { title: "Group counseling session with women survivors", img: "https://picsum.photos/id/132/400/300" },
         { title: "Prayer and support gathering", img: "https://picsum.photos/id/58/400/300" },
@@ -581,7 +680,6 @@
             </div>
         `).join('');
         
-        // Add click event for lightbox
         document.querySelectorAll('.gallery-item').forEach(el => {
             el.addEventListener('click', () => {
                 const img = el.querySelector('img');
@@ -590,7 +688,7 @@
         });
     }
 
-    // Lightbox Modal functions
+    // Lightbox
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const closeModal = document.querySelector(".close-modal");
@@ -603,14 +701,14 @@
     closeModal.onclick = () => modal.style.display = "none";
     modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
 
-    // Mobile navigation toggle
+    // Mobile nav
     const mobileBtn = document.getElementById("mobileMenu");
     const navLinks = document.getElementById("navLinks");
     if(mobileBtn) {
         mobileBtn.addEventListener("click", () => navLinks.classList.toggle("show"));
     }
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -624,17 +722,16 @@
         });
     });
 
-    // Volunteer form submission
+    // Form submission
     const volForm = document.getElementById("volunteerForm");
     if(volForm) {
         volForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            alert("Thank you for reaching out! LAFO will respond within 2-3 working days.");
+            alert("Thank you for reaching out! A representative from LAFO will contact you within 2-3 working days.");
             volForm.reset();
         });
     }
 
-    // Initialize gallery
     renderGallery();
 </script>
 </body>
