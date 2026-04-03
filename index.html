@@ -96,8 +96,8 @@
             color: #4a6a5e;
             font-weight: 600;
             font-size: 0.9rem;
-            display: inline;
-            margin: 0px;
+            //display: inline;
+            //margin: 0px;
         }
         .nav-links {
             display: flex;
@@ -472,8 +472,9 @@
     <div class="container">
         <div class="nav-bar">
             <div class="logo" id="logoContainer">
+                 <img src="logo.jpeg" alt="LAFO Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <!-- Logo will be dynamically checked. If no image, show placeholder -->
-                <div class="logo-placeholder" id="logoPlaceholder">
+                <div class="logo-placeholder" id="logoPlaceholder" style="display: none;">
                     <div class="logo-icon">LA</div>
                     <div class="logo-text">
                         <h1>LAFO</h1>
@@ -647,15 +648,15 @@
     // For now, we check if a logo image file exists at a default path "images/logo.png" or "logo.png"
     // You can also simply replace the placeholder with your actual logo by uncommenting the line below.
     
-    function setLogo(imageUrl) {
-        const logoPlaceholder = document.getElementById('logoPlaceholder');
-        const logoImage = document.getElementById('logoImage');
-        if (logoPlaceholder && logoImage && imageUrl) {
-            logoImage.src = imageUrl;
-            logoImage.style.display = 'block';
-            logoPlaceholder.style.display = 'none';
-        }
-    }
+    //function setLogo(imageUrl) {
+        //const logoPlaceholder = document.getElementById('logoPlaceholder');
+        //const logoImage = document.getElementById('logoImage');
+        //if (logoPlaceholder && logoImage && imageUrl) {
+            //logoImage.src = imageUrl;
+            //logoImage.style.display = 'block';
+            //logoPlaceholder.style.display = 'none';
+        //}
+   // }
     
     // Option 1: If you have a logo file, rename it to "lafo-logo.png" and place it in the same folder.
     // Then uncomment the line below:
